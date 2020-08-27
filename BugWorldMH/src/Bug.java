@@ -10,7 +10,8 @@ public class Bug {
 	private int x;
 	private int y;
 	private int energy;
-	private int id;
+	private static int counter = 0;
+	private int id = counter++;
 	
 	public Bug(String sp, String n, char sym, int x, int y, int e) {
 		species = sp;
