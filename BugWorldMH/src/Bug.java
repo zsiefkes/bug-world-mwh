@@ -31,6 +31,29 @@ public class Bug {
 		energy = 100;		
 	}
 	
+	public void move(String dir) {
+		if ("N".equals(dir))
+			y--;
+		if ("S".equals(dir))
+			y++;
+		if ("W".equals(dir))
+			x--;
+		if ("E".equals(dir))
+			x++;
+	}
+	
+	public void moveRandom() {
+		double d = Math.random();
+		if (d < 0.25)
+			move("N");
+		else if (d < 0.5)
+			move("S");
+		else if (d < 0.75)
+			move("W");
+		else
+			move("E");
+	}
+	
 	public String toString() {
 		return species + " '" + name + "'";
 	}

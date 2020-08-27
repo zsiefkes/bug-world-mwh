@@ -29,11 +29,16 @@ public class EntryPoint {
 
 		Bug c = new Bug("spider", "charlotte", '*', 7, 13, 50);
 		System.out.println(c.toText());
-		b = makeUserBug();
+		//b = makeUserBug();
 		System.out.println(b.toText());
 		bugs.add(c);
 		bugs.add(b);
 		System.out.println(bugs);
+		
+		for (int i = 0; i < 100; i++) {
+			b.moveRandom();
+			System.out.println("x: " + b.getX() + " y: " + b.getY());
+		}
 	}
 
 }
