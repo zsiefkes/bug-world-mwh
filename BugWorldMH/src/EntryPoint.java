@@ -32,6 +32,8 @@ public class EntryPoint {
 		//b = makeUserBug();
 		System.out.println(b.toText());
 		bugs.add(c);
+		
+		b = new Butterfly("steve", 14, 18, 7);
 		bugs.add(b);
 		System.out.println(bugs);
 		
