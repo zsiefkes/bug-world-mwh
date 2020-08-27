@@ -46,6 +46,34 @@ public class World {
 			System.out.print('-');
 		System.out.println('+');
 	}
+	
+	public void updateWorld() {
+		for (Bug b : bugs) {
+			b.tick(this);
+		}
+	}
+
+	public void updateWorld1() {
+		for (Bug b : bugs) {
+			b.moveRandom();
+			if (b.getX() < 0)
+				b.setX(0);
+			if (b.getX() >= width)
+				b.setX(width - 1);
+			if (b.getY() < 0)
+				b.setY(0);
+			if (b.getY() >= height)
+				b.setY(height - 1);
+		}
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
 
 	public void addBug(Bug b) {
 		if (b.getX() < 0 || b.getX() >= width || b.getY() < 0 || b.getY() >= height) {

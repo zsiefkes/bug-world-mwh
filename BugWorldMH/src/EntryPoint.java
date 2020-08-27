@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EntryPoint {
-	
+
 	public static Bug makeUserBug() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter species:");
@@ -17,13 +17,16 @@ public class EntryPoint {
 		int y = scan.nextInt();
 		System.out.println("Enter energy:");
 		int energy = scan.nextInt();
-		
+
 		return new Bug(species, name, symbol, x, y, energy);
 	}
-	
+
 	public static void main(String[] args) {
 		World w = new World(20, 10);
-		w.drawWorld();
+		for (int i = 0; i < 5; i++) {
+			w.drawWorld();
+			w.updateWorld();
+		}
 	}
 
 }

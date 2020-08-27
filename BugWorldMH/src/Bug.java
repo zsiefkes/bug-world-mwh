@@ -42,6 +42,19 @@ public class Bug {
 			x++;
 	}
 	
+	public void tick(World w) {
+		int oldX = x;
+		int oldY = y;
+		this.moveRandom();
+		int i = 0;
+		while (i < 10 && (x < 0 || x >= w.getWidth() || y < 0 || y >= w.getHeight())) {
+			x = oldX;
+			y = oldY;
+			this.moveRandom();
+			i++;
+		}
+	}
+	
 	public void moveRandom() {
 		double d = Math.random();
 		if (d < 0.25)
