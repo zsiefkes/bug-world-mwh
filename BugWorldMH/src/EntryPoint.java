@@ -22,7 +22,7 @@ public class EntryPoint {
 	}
 	
 	public static void main(String[] args) {
-		Bug b = new Bug();
+		Bug b = new Beetle();
 		System.out.println(b.toText());
 		ArrayList<Bug> bugs = new ArrayList<>();
 		bugs.add(b);
