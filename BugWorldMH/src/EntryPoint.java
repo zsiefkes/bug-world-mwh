@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EntryPoint {
@@ -23,10 +24,16 @@ public class EntryPoint {
 	public static void main(String[] args) {
 		Bug b = new Bug();
 		System.out.println(b.toText());
+		ArrayList<Bug> bugs = new ArrayList<>();
+		bugs.add(b);
+
 		Bug c = new Bug("spider", "charlotte", '*', 7, 13, 50);
 		System.out.println(c.toText());
 		b = makeUserBug();
 		System.out.println(b.toText());
+		bugs.add(c);
+		bugs.add(b);
+		System.out.println(bugs);
 	}
 
 }
