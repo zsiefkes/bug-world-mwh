@@ -22,25 +22,8 @@ public class EntryPoint {
 	}
 	
 	public static void main(String[] args) {
-		Bug b = new Beetle();
-		System.out.println(b.toText());
-		ArrayList<Bug> bugs = new ArrayList<>();
-		bugs.add(b);
-
-		Bug c = new Bug("spider", "charlotte", '*', 7, 13, 50);
-		System.out.println(c.toText());
-		//b = makeUserBug();
-		System.out.println(b.toText());
-		bugs.add(c);
-		
-		b = new Butterfly("steve", 14, 18, 7);
-		bugs.add(b);
-		System.out.println(bugs);
-		
-		for (int i = 0; i < 100; i++) {
-			b.moveRandom();
-			System.out.println("x: " + b.getX() + " y: " + b.getY());
-		}
+		World w = new World(20, 10);
+		w.drawWorld();
 	}
 
 }
