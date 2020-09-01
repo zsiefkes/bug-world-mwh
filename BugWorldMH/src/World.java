@@ -86,6 +86,14 @@ public class World {
 		System.out.println('+');
 	}
 	
+	public boolean obstacleAt(int x, int y) {
+		for (Obstacle o : obstacles) {
+			if (o.getX() == x && o.getY() == y)
+				return true;
+		}
+		return false;
+	}
+	
 	public void updateWorld() {
 		for (Bug b : bugs) {
 			b.tick(this);

@@ -47,7 +47,8 @@ public class Bug {
 		int oldY = y;
 		this.moveRandom();
 		int i = 0;
-		while (i < 10 && (x < 0 || x >= w.getWidth() || y < 0 || y >= w.getHeight())) {
+		while (i < 10 && (x < 0 || x >= w.getWidth() || y < 0 || y >= w.getHeight())
+				&& !w.obstacleAt(x, y)) {
 			x = oldX;
 			y = oldY;
 			this.moveRandom();
