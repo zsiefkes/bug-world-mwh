@@ -12,8 +12,8 @@ public class Butterfly extends Bug {
 	}
 	
 	protected String smellFood(World w) {
-		List<Plant> nearbyPlants = w.getPlantsInRange(getX(), getY(), 4);
-		nearbyPlants.sort(new BiggestPlantComparator());
+		List<Plant> nearbyPlants = w.getPlantsInRange(getX(), getY(), 6);
+		nearbyPlants.sort(new BestPlantComparator(getX(), getY()));
 		if (nearbyPlants.size() > 0) {
 			Plant p = nearbyPlants.get(0);
 			if (p.getX() < getX())
