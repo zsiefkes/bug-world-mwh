@@ -23,9 +23,15 @@ public class EntryPoint {
 
 	public static void main(String[] args) {
 		World w = new World(20, 10);
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 20; i++) {
 			w.drawWorld();
 			w.updateWorld();
+			try {
+				Thread.sleep(250);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

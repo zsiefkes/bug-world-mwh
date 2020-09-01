@@ -14,6 +14,7 @@ public class Beetle extends Bug {
 	
 	protected String smellFood(World w) {
 		List<Bug> nearbyBugs = w.getBugsInRange(getX(), getY(), 6);
+		nearbyBugs.sort(new NearestBugComparator(getX(), getY()));
 		nearbyBugs.remove(this);
 		if (nearbyBugs.size() > 0) {
 			Bug p = nearbyBugs.get(0);
