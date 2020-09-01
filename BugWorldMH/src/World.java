@@ -2,6 +2,7 @@ import java.util.*;
 
 public class World {
 	private ArrayList<Bug> bugs = new ArrayList<Bug>();
+	private ArrayList<Plant> plants = new ArrayList<Plant>();
 
 	private int width;
 	private int height;
@@ -17,6 +18,13 @@ public class World {
 			} else {
 				addBug(new Beetle("bob", x, y, 50));
 			}
+		}
+		
+		for (int i = 0; i < 10; i++) {
+			int x = (int) (Math.random() * width);
+			int y = (int) (Math.random() * height);
+			int s = (int) (Math.random() * 10);
+			plants.add(new Plant(s, x, y));
 		}
 	}
 
@@ -36,8 +44,18 @@ public class World {
 						break;
 					}
 				}
-				if (i == bugs.size())
-					System.out.print(' ');
+				if (i == bugs.size()) {
+					i = 0;
+					for (; i < plants.size(); i++) {
+						Plant p = plants.get(i);
+						if (p.getX() == x && p.getY() == y) {
+							System.out.print(p.getSymbol());
+							break;
+						}
+					}
+					if (i == plants.size())
+						System.out.print(' ');
+				}
 			}
 			System.out.println('|');
 		}
@@ -80,5 +98,13 @@ public class World {
 			return;
 		}
 		bugs.add(b);
+	}
+	
+
+	public void addPlant(Plant p) {
+		if (p.getX() < 0 || p.getX() >= width || p.getY() < 0 || p.getY() >= height) {
+			return;
+		}
+		plants.add(p);
 	}
 }
