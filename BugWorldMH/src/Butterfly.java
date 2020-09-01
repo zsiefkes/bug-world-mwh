@@ -1,3 +1,4 @@
+import java.util.List;
 
 public class Butterfly extends Bug {
 
@@ -8,6 +9,22 @@ public class Butterfly extends Bug {
 	public void move(String dir) {
 		super.move(dir);
 		super.move(dir);
+	}
+	
+	protected String smellFood(World w) {
+		List<Plant> nearbyPlants = w.getPlantsInRange(getX(), getY(), 4);
+		if (nearbyPlants.size() > 0) {
+			Plant p = nearbyPlants.get(0);
+			if (p.getX() < getX())
+				return "W";
+			if (p.getX() > getX())
+				return "E";
+			if (p.getY() < getY())
+				return "N";
+			if (p.getY() > getY())
+				return "S";
+		}
+		return super.smellFood(w);
 	}
 	
 	// Could rename this to move instead:

@@ -45,7 +45,8 @@ public class Bug {
 	public void tick(World w) {
 		int oldX = x;
 		int oldY = y;
-		this.moveRandom();
+		String dir = this.smellFood(w);
+		this.move(dir);
 		int i = 0;
 		while (i < 10 && (x < 0 || x >= w.getWidth() || y < 0 || y >= w.getHeight())
 				&& !w.obstacleAt(x, y)) {
@@ -54,6 +55,19 @@ public class Bug {
 			this.moveRandom();
 			i++;
 		}
+	}
+	
+	protected String smellFood(World w) {
+		// Didn't smell any food - try a random direction
+		double d = Math.random();
+		if (d < 0.25)
+			return "N";
+		else if (d < 0.5)
+			return "S";
+		else if (d < 0.75)
+			return "W";
+		else
+			return "E";
 	}
 	
 	public void moveRandom() {

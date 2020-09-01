@@ -94,6 +94,26 @@ public class World {
 		return false;
 	}
 	
+	public List<Plant> getPlantsInRange(int x, int y, int r) {
+		List<Plant> ret = new ArrayList<Plant>();
+		for (Plant p : plants) {
+			int d = Math.abs(p.getX() - x) + Math.abs(p.getY() - y);
+			if (d <= r)
+				ret.add(p);
+		}
+		return ret;
+	}
+
+	public List<Bug> getBugsInRange(int x, int y, int r) {
+		List<Bug> ret = new ArrayList<Bug>();
+		for (Bug b : bugs) {
+			int d = Math.abs(b.getX() - x) + Math.abs(b.getY() - y);
+			if (d <= r)
+				ret.add(b);
+		}
+		return ret;
+	}
+
 	public void updateWorld() {
 		for (Bug b : bugs) {
 			b.tick(this);
