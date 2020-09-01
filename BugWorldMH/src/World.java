@@ -20,6 +20,11 @@ public class World {
 				addBug(new Beetle("bob", x, y, 50));
 			}
 		}
+		for (int i = 0; i < 2; i++) {
+			int x = (int) (Math.random() * width);
+			int y = (int) (Math.random() * height);
+			addBug(new BigBug(2, 2, "BIG", "bob", '@', x, y, 50));
+		}
 		
 		for (int i = 0; i < 10; i++) {
 			int x = (int) (Math.random() * width);
@@ -50,7 +55,7 @@ public class World {
 				int i;
 				for (i = 0; i < bugs.size(); i++) {
 					Bug b = bugs.get(i);
-					if (b.getX() == x && b.getY() == y) {
+					if (b.contains(x, y)) {
 						foundBug = b;
 						break;
 					}

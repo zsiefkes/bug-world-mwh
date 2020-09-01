@@ -48,13 +48,22 @@ public class Bug {
 		String dir = this.smellFood(w);
 		this.move(dir);
 		int i = 0;
-		while (i < 10 && (x < 0 || x >= w.getWidth() || y < 0 || y >= w.getHeight())
-				&& !w.obstacleAt(x, y)) {
+		while (i < 10 && (x < 0 || x >= w.getWidth() || y < 0 || y >= w.getHeight()
+				|| this.onObstacle(w))) {
 			x = oldX;
 			y = oldY;
 			this.moveRandom();
 			i++;
 		}
+	}
+	
+	protected boolean onObstacle(World w) {
+		return w.obstacleAt(x, y);
+	}
+
+	/** Returns true if this bug contains the point (x, y). **/
+	public boolean contains(int x, int y) {
+		return x == this.x && y == this.y;
 	}
 	
 	protected String smellFood(World w) {
