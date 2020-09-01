@@ -26,6 +26,12 @@ public class World {
 			addBug(new BigBug(2, 2, "BIG", "bob", '@', x, y, 50));
 		}
 		
+		for (int i = 0; i < 2; i++) {
+			int x = (int) (Math.random() * width);
+			int y = (int) (Math.random() * height);
+			addBug(new Worm(5, "bob", x, y, 50));
+		}
+		
 		for (int i = 0; i < 10; i++) {
 			int x = (int) (Math.random() * width);
 			int y = (int) (Math.random() * height);
