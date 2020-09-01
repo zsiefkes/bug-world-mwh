@@ -3,6 +3,7 @@ import java.util.*;
 public class World {
 	private ArrayList<Bug> bugs = new ArrayList<Bug>();
 	private ArrayList<Plant> plants = new ArrayList<Plant>();
+	private ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 
 	private int width;
 	private int height;
@@ -26,6 +27,13 @@ public class World {
 			int s = (int) (Math.random() * 10);
 			plants.add(new Plant(s, x, y));
 		}
+		
+		for (int i = 0; i < 10; i++) {
+			int x = (int) (Math.random() * width);
+			int y = (int) (Math.random() * height);
+			obstacles.add(new Obstacle(x, y));
+		}
+
 	}
 
 	public void drawWorld() {
@@ -36,26 +44,39 @@ public class World {
 		for (int y = 0; y < height; y++) {
 			System.out.print('|');
 			for (int x = 0; x < width; x++) {
+				Bug foundBug = null;
+				Plant foundPlant = null;
+				Obstacle foundObstacle = null;
 				int i;
 				for (i = 0; i < bugs.size(); i++) {
 					Bug b = bugs.get(i);
 					if (b.getX() == x && b.getY() == y) {
-						System.out.print(b.getSymbol());
+						foundBug = b;
 						break;
 					}
 				}
-				if (i == bugs.size()) {
-					i = 0;
-					for (; i < plants.size(); i++) {
-						Plant p = plants.get(i);
-						if (p.getX() == x && p.getY() == y) {
-							System.out.print(p.getSymbol());
-							break;
-						}
+				i = 0;
+				for (; i < plants.size(); i++) {
+					Plant p = plants.get(i);
+					if (p.getX() == x && p.getY() == y) {
+						foundPlant = p;
+						break;
 					}
-					if (i == plants.size())
-						System.out.print(' ');
 				}
+				for (Obstacle o : obstacles) {
+					if (o.getX() == x && o.getY() == y) {
+						foundObstacle = o;
+						break;
+					}
+				}
+				if (foundBug != null)
+					System.out.print(foundBug.getSymbol());
+				else if (foundPlant != null)
+					System.out.print(foundPlant.getSymbol());
+				else if (foundObstacle != null)
+					System.out.print(foundObstacle.getSymbol());
+				else
+					System.out.print(' ');
 			}
 			System.out.println('|');
 		}
